@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1"
+	xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+		http://xmlns.jcp.org/xml/ns/persistence
+		http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+
+	<persistence-unit name="Hamburgueria"
+		transaction-type="RESOURCE_LOCAL">
+
+		<!--Abaixo as classes modeladas com orm -->
+		<!-- <class>nomeDoPacote.NomeDaClasse</class> -->
+		<class>hamburgueria.model.Hamburguer</class>
+		<class>hamburgueria.model.Bebida</class>
+		<class>hamburgueria.model.Acompanhamento</class>
+		<class>hamburgueria.model.Sobremesa</class>
+		<class>hamburgueria.model.Combo</class>
+			
+		<properties>
+
+			<property name="javax.persistence.jdbc.driver"
+				value="org.sqlite.JDBC" />
+			<property name="javax.persistence.jdbc.url"
+				value="jdbc:sqlite:C:\\des_S\\hamburgueria.db" />
+
+			<property name="eclipselink.target-database"
+				value="Database" />
+			<property name="eclipselink.logging.level.event" value="OFF" />
+			<property name="eclipselink.logging.level" value="off" />
+
+		</properties>
+
+	</persistence-unit>
+
+</persistence>
