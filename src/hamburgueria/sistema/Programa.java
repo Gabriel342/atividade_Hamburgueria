@@ -15,6 +15,8 @@ import hamburgueria.model.Sobremesa;
 import java.util.List;
 import java.util.Scanner;
 
+import javax.persistence.Id;
+
 public class Programa {
 
 	public static void main(String[] args) throws Exception {
@@ -22,47 +24,39 @@ public class Programa {
 		//Observação, caso você escreva "HamburguerDAO.metodo();" um erro vai ocorrer porque é o nome do método estático, com letra maíscula
 		//A primeria letra deve ser minúscula para fazer o método de instância corretamente: nomeDoMetodoDAO.listar();
 	
-		SobremesaDAO sobremesaDAO = new SobremesaDAO();
+		//SobremesaDAO sobremesaDAO = new SobremesaDAO();
 		
 		//Exemplo de salvar os itens da tabela Hamburgueres
-		
-			//Sobremesa sobremesa = new Sobremesa("asdasd", 123);
-			//sobremesaDAO.atualizar(sobremesa);
+		/*
+			Sobremesa sobremesa = new Sobremesa();
+			sobremesa.setNome("aaaa");
+			sobremesa.setValor(20);
+			sobremesaDAO.atualizar(sobremesa);
+		*/
 		//Exemplo apagar ...
 		
 			//sobremesaDAO.apagar(2);
 		
 		//Exemplo de listar ...
-			
+		/*
 				List<Sobremesa> listaS = sobremesaDAO.listar();
 				
-				/*	int id =4;
-					for (Sobremesa s : listaS) {
-						
-							
-							System.out.println(s.getId());								
-						
-					}
-					String[] sobremesasLista = new String[20];
+					for (Sobremesa id : listaS) {
 					
-					for (int i=0; i<=0; i++) {
-						
-						
-						sobremesasLista[i] = (s);								
-					
+						System.out.println(id);								
 					}
-				 */
-				
-			
-		//Exemplo burcarPorId (NF)...
+			*/
+		//Exemplo burcarPorId ...
+		
+		Integer id = 0;
+		Scanner leitor = new Scanner(System.in);
+		System.out.println("insira um id para ver a sobremesa");
+		id = leitor.nextInt();
 		
 			SobremesaDAO sobremesaDAO = new SobremesaDAO();
-			sobremesaDAO.buscarPorId(getId(4));
-					
-		//Exemplo atualizar(NF) ...
-		
-			//sobremesaDAO.atualizar();
+			System.out.println(sobremesaDAO.buscarPorId(id));
 		
 		
+		//Exemplo atualizar(NF) ...	
 	}
 }
