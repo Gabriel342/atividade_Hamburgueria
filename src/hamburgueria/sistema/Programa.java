@@ -24,15 +24,19 @@ public class Programa {
 		//Observação, caso você escreva "HamburguerDAO.metodo();" um erro vai ocorrer porque é o nome do método estático, com letra maíscula
 		//A primeria letra deve ser minúscula para fazer o método de instância corretamente: nomeDoMetodoDAO.listar();
 	
-		//SobremesaDAO sobremesaDAO = new SobremesaDAO();
+		SobremesaDAO sobremesaDAO = new SobremesaDAO();
 		
-		//Exemplo de salvar os itens da tabela Hamburgueres
-		/*
-			Sobremesa sobremesa = new Sobremesa();
-			sobremesa.setNome("aaaa");
-			sobremesa.setValor(20);
-			sobremesaDAO.atualizar(sobremesa);
-		*/
+		//Exemplo de salvar os itens da tabela sobremesas
+		
+			String nome;
+			double id;
+			Scanner leitor = new Scanner(System.in);
+			System.out.println("insira uma nova sobremesa");
+			nome = leitor.next();
+			System.out.println("insira o valor da nova sobremesa");
+			id = leitor.nextDouble();
+			Sobremesa sobremesa = new Sobremesa(nome,id);
+		
 		//Exemplo apagar ...
 		
 			//sobremesaDAO.apagar(2);
@@ -47,7 +51,7 @@ public class Programa {
 					}
 			*/
 		//Exemplo burcarPorId ...
-		
+		/*
 		Integer id = 0;
 		Scanner leitor = new Scanner(System.in);
 		System.out.println("insira um id para ver a sobremesa");
@@ -55,8 +59,7 @@ public class Programa {
 		
 			SobremesaDAO sobremesaDAO = new SobremesaDAO();
 			System.out.println(sobremesaDAO.buscarPorId(id));
-		
-		
-		//Exemplo atualizar(NF) ...	
+		*/
+
 	}
 }
