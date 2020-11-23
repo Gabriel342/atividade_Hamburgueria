@@ -1,70 +1,84 @@
 package hamburgueria.sistema;
 
-import hamburgueria.DAO.AcompanhamentoDAO;
-import hamburgueria.DAO.BebidaDAO;
-import hamburgueria.DAO.ComboDAO;
-import hamburgueria.DAO.DAO;
-import hamburgueria.DAO.HamburguerDAO;
 import hamburgueria.DAO.SobremesaDAO;
-import hamburgueria.model.Acompanhamento;
-import hamburgueria.model.Bebida;
-import hamburgueria.model.Combo;
-import hamburgueria.model.Hamburguer;
 import hamburgueria.model.Sobremesa;
 
 import java.util.List;
 import java.util.Scanner;
-
-import javax.persistence.Id;
 
 public class Programa {
 
 	public static void main(String[] args) throws Exception {
 		
 		//listar, listarPorId
-		//Observação, caso você escreva "HamburguerDAO.metodo();" um erro vai ocorrer porque é o nome do método estático, com letra maíscula
-		//A primeria letra deve ser minúscula para fazer o método de instância corretamente: nomeDoMetodoDAO.listar();
 	
-		//SobremesaDAO sobremesaDAO = new SobremesaDAO();
-		//Scanner leitor = new Scanner(System.in);
-		
-		//Exemplo de salvar os itens da tabela sobremesas
-		/*
-			String nome;
-			int valor;
-			System.out.println("insira uma nova sobremesa");
-			nome = leitor.next();
-			System.out.println("insira o valor da nova sobremesa");
-			id = leitor.nextDouble();
-			Sobremesa sobremesa = new Sobremesa(nome,valor);
-			sobremesaDAO.salvar(sobremesa);
-		*/
-		
-		//Exemplo apagar ...
-		/*
-			int id;
-			id = leitor.nextInt();
-			sobremesaDAO.apagar(id);
-		*/
-		//Exemplo de listar ...
-		/*
-				List<Sobremesa> listaS = sobremesaDAO.listar();
-				
-					for (Sobremesa id : listaS) {
-					
-						System.out.println(id.getValor());								
-					}
-		*/	
-		//Exemplo burcarPorId ...
-		
-		Integer id = 0;
+		SobremesaDAO sobremesaDAO = new SobremesaDAO();
 		Scanner leitor = new Scanner(System.in);
-		System.out.println("insira um id para ver a sobremesa");
-		id = leitor.nextInt();
 		
-			SobremesaDAO sobremesaDAO = new SobremesaDAO();
-			System.out.println(sobremesaDAO.buscarPorId(id));
+		int op;
+		int id;
+		double valor;
+		String nome;
 		
+		do {
+			//menu para selecionar realizar crud sobremesa
+			System.out.println("Informe a ação para sobremesa:");
+			System.out.println("1- Salvar nova sobremesa");
+			System.out.println("2- Apagar soremesa");
+			System.out.println("3- Listar sobremesa");
+			System.out.println("4- Buscar por Id");
+			System.out.println("5- Finalizar operações");
+			op = leitor.nextInt();
+			
+			switch(op) {
+				//Exemplo de salvar os itens da tabela sobremesas
+				case 1: {				
+					System.out.println("insira o nome da nova sobremesa");
+					nome = leitor.next();
+					System.out.println("insira o valor da nova sobremesa");
+					valor = leitor.nextDouble();
+					Sobremesa sobremesa = new Sobremesa(nome,valor);
+					sobremesaDAO.salvar(sobremesa);
+					break;
+				}
+				case 2: {
+					//Exemplo apagar ...
+					System.out.println("insira o id da sobremesa que deseja apagar");
+					id = leitor.nextInt();
+					sobremesaDAO.apagar(id);
+					break;
+				}
+				case 3: {					
+					//Exemplo de listar ...
+					List<Sobremesa> listaS = sobremesaDAO.listar();
+					
+					System.out.println("\n\n");
+					for (Sobremesa s : listaS) {
+						System.out.println("\t" + s);								
+					}
+					System.out.println("\n\n");
+					break;
+				}
+				case 4: {
+					//Exemplo burcarPorId ...	
+					System.out.println("insira um id para ver a sobremesa");
+					id = leitor.nextInt();
+					System.out.println("\n\n");
+					System.out.println("\t" + sobremesaDAO.buscarPorId(id));
+					System.out.println("\n\n");
 
+					break;
+				}
+				case 5: {
+					System.out.println("operações em sobremesa concluídas");
+					break;
+				}
+				default : {
+					System.out.println("valor inserido para opção inválido");
+					break;
+				}
+			}
+		}while(op != 5);
+		leitor.close();
 	}
 }
